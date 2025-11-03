@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from '../common/Container'
 import Button from '../common/Button'
 import Image from '../common/Image'
@@ -11,6 +11,21 @@ import Flex from '../common/Flex'
 
 
 const Footer = () => {
+      // Footer menu Active Part Start 
+  
+    const [manuActive, setManuActive]= useState(false)
+          const handleMenuActive = (index)=>{
+            setManuActive(index)
+          }
+
+          // second list 
+
+          const [footerActive, setFooterActive]=useState(false)
+          const handleFooter =(index)=>{
+            setFooterActive(index)
+          }
+  
+          // Footer Menu Active Part End 
   return (
     <>
     <div className="bg-darkText lg:py-10 px-3 py-5">
@@ -38,7 +53,7 @@ const Footer = () => {
                 {name: "Contact", path:'/'},
                 {name: "Return Policy", path:'/'}
               ].map((item, index)=>(
-                <li key={index}><Link to={item.path} className='text-lightText text-base  hover:text-accent transition'>{item.name}</Link></li>
+                <li key={index} onClick={()=>handleMenuActive(index)}><Link to={item.path} className={`text-text-accent text-base  hover:text-accent transition ${manuActive=== index ? 'text-accent' : 'text-lightText'}`}>{item.name}</Link></li>
               ))}
             </ul>
         </div>
@@ -52,7 +67,7 @@ const Footer = () => {
                 {name: "Shipping Policy", path:'/'},
                 {name: "Terms &amp; Conditions", path:'/'},
               ].map((item, index)=>(
-                <li key={index}><Link to={item.path} className='text-lightText text-base hover:text-accent transition'>{item.name}</Link></li>
+                <li key={index} onClick={()=>handleFooter(index)} ><Link to={item.path} className={`text-accent text-base hover:text-accent transition ${footerActive=== index ? 'text-accent' : 'text-lightText'}`}>{item.name}</Link></li>
               ))}
             </ul>
         </div>

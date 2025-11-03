@@ -111,7 +111,7 @@ const Navbar = () => {
                   {name: "About", path:'/'},
                   {name: "Contact", path:'/'},
                 ].map((item, index)=>(
-                  <li key={index} className='text-base py-1 text-lightText hover:text-accent font-medium'><Link to={item.path}>{item.name}</Link></li>
+                  <li key={index} onClick={()=>handleMenuActive(index)} className={`text-base py-1 text-accent hover:text-accent font-medium ${manuActive=== index ? 'text-accent' : 'text-lightText'}`}><Link to={item.path}>{item.name}</Link></li>
                 ))}
               </ul>
               <div className="flex items-center gap-x-8 px-5 pb-5">
