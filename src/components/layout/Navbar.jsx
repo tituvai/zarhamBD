@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from '../common/Image'
 import logo from '/src/assets/logo.png'
 import { Link } from 'react-router-dom'
@@ -14,6 +14,15 @@ import { HiBars3 } from "react-icons/hi2";
 
 const Navbar = () => {
 
+    // MenuItem Active Part Start 
+
+  const [manuActive, setManuActive]= useState(false)
+        const handleMenuActive = (index)=>{
+          setManuActive(index)
+        }
+
+        // Menu Active Part End 
+
   // Mobile divece Part Start
 
   const [mobileBars, setMobileBars] =useState(false)
@@ -23,9 +32,36 @@ const Navbar = () => {
   }
 
   // Mobile divece Part End
+
+  // Navebar Scroll Part Start 
+
+    // menu Part Start 
+
+   const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+   useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+  // Navebar Scroll Part End
   return (
    <>
-   <div className="bg-darkText">
+  <div className="py-12">
+     <div className={`bg-darkText fixed z-50 top-0 left-0 w-full transition-transform duration-300 ${isVisible ? 'translate-y-0 bg-darkText' : '-translate-y-full bg-darkText'}`}>
      <Container>
         <div className="py-5 hidden lg:block">
         <Flex>
@@ -36,13 +72,13 @@ const Navbar = () => {
               <ul className='flex items-center gap-x-10'>
             {[
               {name: "Home", path:'/'},
-              {name: "Shop", path:'/'},
+              {name: "Shop", path:'/shopDetails'},
               {name: "Collections", path:'/'},
               {name: "Lookbook", path:'/'},
               {name: "About", path:'/'},
               {name: "Contact", path:'/'},
             ].map((item, index)=>(
-              <li key={index} className='text-base text-lightText hover:text-accent font-medium'><Link to={item.path}>{item.name}</Link></li>
+              <li key={index} onClick={()=>handleMenuActive(index)} className={`text-base text-accent hover:text-accent font-medium ${manuActive=== index ? 'text-accent' : 'text-lightText'}`}><Link to={item.path}>{item.name}</Link></li>
             ))}
           </ul>
           </div>
@@ -85,12 +121,10 @@ const Navbar = () => {
             <AiOutlineShoppingCart className='text-lightText size-6'/>
           </div>
          </div>  
-        }
-           
-           
-
+        }          
      </Container>  
    </div>
+  </div>
    </>
   )
 }

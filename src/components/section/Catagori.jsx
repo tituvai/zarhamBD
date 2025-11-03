@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 const Catagori = () => {
   return (
     <>
-    <div className="">
+    <div className="px-2">
         <Container>
             <div className="">
                 <Heading className={'text-4xl text-darkText font-semibold text-center pb-5'} text={'Shop By Category'} as={'h3'}/>

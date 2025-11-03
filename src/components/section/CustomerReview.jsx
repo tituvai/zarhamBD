@@ -24,7 +24,7 @@ const CustomerReview = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
           dots: false
@@ -33,21 +33,13 @@ const CustomerReview = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
           nextArrow:null,
           prevArrow:null
         }
       },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          nextArrow:null,
-          prevArrow:null
-        }
-      }
+     
     ]
   };
   return (
@@ -59,7 +51,7 @@ const CustomerReview = () => {
                 <Heading className={'text-4xl text-darkText font-semibold text-center pb-10'} text={'Customer Reviews'} as={'h3'}/>
             </div>
             
-                 <Slider {...settings} className="mx-2">
+                 <Slider {...settings} className="mx-2 overflow-x-hidden">
       
                 <div className="px-2">
                         <div className=" bg-darkText lg:p-5 p-3 rounded">

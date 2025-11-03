@@ -13,7 +13,7 @@ const Founder = () => {
         <Container>
             <Flex className={'flex-col lg:flex-row'}>
                 <div className="lg:w-[48%]">
-                    <Image imgSrc={founder} imgAlt={'founder.png'}/>
+                    <Image className={'w-full h-[500px]'} imgSrc={founder} imgAlt={'founder.png'}/>
                 </div>
                 <div className="lg:w-[49%]">
                     <Heading className={'text-5xl text-darkText font-medium pb-10'} text={'Let Me Tell You A Story'} as={'h3'}/>

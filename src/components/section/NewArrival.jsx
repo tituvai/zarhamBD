@@ -12,7 +12,7 @@ import Button from '../common/Button'
 const NewArrival = () => {
   return (
     <>
-    <div className="py-15">
+    <div className="py-15 px-2">
         <Container>
             <div className="">
                 <Heading className={'text-4xl text-darkText font-semibold text-center pb-10'} text={'New Arrival'} as={'h3'}/>

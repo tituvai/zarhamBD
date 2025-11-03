@@ -13,14 +13,14 @@ import Flex from '../common/Flex'
 const Footer = () => {
   return (
     <>
-    <div className="bg-darkText lg:py-10 px-3">
+    <div className="bg-darkText lg:py-10 px-3 py-5">
       <Container>
-        <div className="flex items-center gap-x-20">
+        <div className="flex flex-col lg:flex-row items-center gap-x-20">
           <Image className={'w-[300px]'} imgSrc={logo} imgAlt={'logo.png'}/>
-          <Heading className={'text-2xl font-semibold text-lightText'} text={'JOIN THE CLUB FOR EXCLUSIVE OFFERS'} as={'h3'}/>
+          <Heading className={'text-xl lg:text-2xl font-semibold text-lightText'} text={'JOIN THE CLUB FOR EXCLUSIVE OFFERS'} as={'h3'}/>
         </div>
       <div className='flex justify-between flex-col lg:flex-row pt-5'>
-        <div className=" lg:w-[24%] pl-5">
+        <div className=" lg:w-[24%] lg:pl-5">
           <p className='text-sm text-gray-400 font-medium'> Founding the principle that true style embodies character. BD
             clothes the best modern collection and style for everyone.</p>
           <div className="flex space-x-4 pt-4">
@@ -30,7 +30,7 @@ const Footer = () => {
           </div>
         </div>
         <div className=" lg:w-[24%]">
-           <Heading className={'text-lg font-medium text-accent'} text={'QUICKLINKS'} as={'h3'}/>
+           <Heading className={'text-lg font-medium text-accent pt-5 lg:pt-0'} text={'QUICKLINKS'} as={'h3'}/>
           <h4 className="font-bold text-white mb-4"></h4>
             <ul className='flex flex-col gap-y-3'>
               {[
@@ -45,7 +45,7 @@ const Footer = () => {
 
 
         <div className=" lg:w-[24%]">
-          <Heading className={'text-lg font-medium text-accent'} text={'CUSTOMER SUPPORT'} as={'h3'}/>
+          <Heading className={'text-lg font-medium text-accent pt-5 lg:pt-0'} text={'CUSTOMER SUPPORT'} as={'h3'}/>
           <ul className='flex flex-col gap-y-3 pt-3'>
               {[
                 {name: "Help Center Info", path:'/'},

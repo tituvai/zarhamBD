@@ -15,11 +15,11 @@ import shirt from '/src/assets/shirt.jpg'
 
 const ShopDetails = () => {
 
-    // *** সমাধানের জন্য এই অবজেক্টটি যোগ করা হয়েছে ***
+    
     const product = {
         title: "Classic Cotton Shirt",
         price: "$199.00"
-        // ভবিষ্যতে, এটি props বা API কল থেকে আসবে
+        
     };
     // ********************************************
 
@@ -103,7 +103,7 @@ const ShopDetails = () => {
                 <Container>
                     <div className="lg:flex justify-between">
                         <div className="lg:w-[50%] pb-10 lg:pb-0 ">
-                            <div className="slider-container pl-30 z-40 ">
+                            <div className="slider-container lg:pl-30 z-40 ">
                                 <Slider {...settings} className="overflow-hidden">
                                     {images.map((img, index) => (  
                                         <div key={index}><img className="w-full h-[600px]" src={img} alt={`slide-${index}`}/></div>
@@ -153,9 +153,9 @@ const ShopDetails = () => {
                                 </div>
                                 <div className=""><Button className={'px-18 mt-3 lg:mt-0'} btnText={'ADD TO CART'}/></div>
                             </div>
-                            <div className="flex items-center gap-x-10 pt-7">
-                                <Button className={'flex items-center gap-x-2'} btnText={<><CiHeart className="text-xl"/><span>ADD TO WISHLIST</span></>}/>
-                                <Heading className={'flex items-center gap-x-2'} text={<><IoShareSocialOutline/><span>SHARE</span></>} as={'h4'}/>
+                            <div className="flex flex-col lg:flex-row lg:items-center lg:gap-x-10 pt-7">
+                                <Button className={'flex items-center lg:gap-x-2 w-[250px]'} btnText={<><CiHeart className="text-xl"/><span>ADD TO WISHLIST</span></>}/>
+                                <Heading className={'flex items-center lg:gap-x-2 pt-5 lg:pt-0'} text={<><IoShareSocialOutline/><span>SHARE</span></>} as={'h4'}/>
                             </div>
                             <Heading className={'text-base text-darkText leading-7 pt-7'} text={<><span className="text-darkText pr-2">SKU :</span><span>N/A</span></>} as={'h5'}/>
                             <Heading className={'text-base text-darkText leading-7'} text={<><span className="text-darkText pr-2">Categories :</span><span>Casual & Urban Wear, Jackets, Men</span></>} as={'h5'}/>
