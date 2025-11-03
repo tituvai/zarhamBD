@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root{
+  @theme {
+  --font-display: "Inter", sans-serif; 
+}
+}
+@theme {
+  --color-primary: #000;
+  --color-accent: #bfa14e;
+  --color-lightText: #f3f4f6;
+  --color-darkText: #1f2937;
+
+}
+

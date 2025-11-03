@@ -1,0 +1,63 @@
+
+/* ==== Indian Terrain style slick dots ==== */
+.slick-dots {
+  bottom: 30px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  z-index: 10;
+}
+
+.slick-dots li {
+  width: 24px;
+  height: 3px !important;
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+/* remove default dot */
+.slick-dots li button:before {
+  content: none !important;
+}
+
+/* active state */
+.slick-dots li.slick-active button {
+  background-color: #000; 
+  width: 24px;            
+  height: 3px !important;  
+   margin: 0;
+  padding: 0;        
+}
+
+
+
+/* Shop details Part Start  */
+
+ 
+  .slick-dots.custom-thumb {
+  display: flex !important;
+  flex-direction: column;
+  position: absolute;
+  left:-300px;
+  top: -20px;
+  z-index: 999 !important;
+}
+
+.slick-dots.custom-thumb li {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+}
+
+.slick-dots.custom-thumb li img {
+  opacity: calc(30%);
+  cursor: pointer;
+}
+
+.slick-dots.custom-thumb li.slick-active img {
+  opacity: calc(100%); 
+}
+ 
