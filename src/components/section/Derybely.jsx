@@ -24,14 +24,15 @@ const Derybely = () => {
             <FiBox className=' lg:size-10 size-7 m-auto text-accent'/>
             <Heading className={'lg:text-xl text-sm text-lightText font-normal tracking-wider text-center pt-4'} text={'Easy 7 days return'} as={'h4'}/>
             </div>
+            <div className="lg:w-[250px] w-[48%] bg-black lg:p-10 p-3 rounded">
+            <FaLock className=' lg:size-10 size-7 m-auto text-accent'/>
+            <Heading className={'lg:text-xl text-sm text-lightText font-normal tracking-wider text-center pt-4'} text={'Secure Transaction'} as={'h4'}/>
+            </div>
           <div className="lg:w-[250px] w-[48%] bg-black lg:p-10 p-3 rounded">
             <FaTags className=' lg:size-10 size-7 m-auto text-accent'/>
             <Heading className={'lg:text-xl text-sm text-lightText font-normal tracking-wider text-center pt-4'} text={'Curated Selection'} as={'h4'}/>
           </div>
-          <div className="lg:w-[250px] w-[48%] bg-black lg:p-10 p-3 rounded">
-            <FaLock className=' lg:size-10 size-7 m-auto text-accent'/>
-            <Heading className={'lg:text-xl text-sm text-lightText font-normal tracking-wider text-center pt-4'} text={'Secure Transaction'} as={'h4'}/>
-            </div>
+          
         </Flex>
       </div>
     </div>

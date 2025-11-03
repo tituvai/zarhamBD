@@ -35,7 +35,6 @@ const CustomerReview = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          initialSlide: 1,
           nextArrow:null,
           prevArrow:null
         }
@@ -56,55 +55,55 @@ const CustomerReview = () => {
     <div className="pb-3 pt-10">
        
         <Container>
-            <div className="overflow-x-hidden">
+            <div className="">
                 <Heading className={'text-4xl text-darkText font-semibold text-center pb-10'} text={'Customer Reviews'} as={'h3'}/>
             </div>
             
                  <Slider {...settings} className="mx-2">
       
                 <div className="px-2">
-                    <div className=" bg-darkText lg:p-5 p-3 rounded">
+                        <div className=" bg-darkText lg:p-5 p-3 rounded">
                     <Flex className={'flex-col lg:flex-row'}>
                         <div className="lg:w-[45%]">
                             <Image className={'lg:w-[200px] lg:h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
                         </div>
                         <div className="lg:w-[49%]">
-                            <Heading className={'text-xl text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
-                            <Heading className={'text-2xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
+                            <Heading className={'lg:text-xl text-base text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
+                            <Heading className={'lg:text-2xl text-xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
                             <div className="bg-white rounded p-3">
                                 <p className='text-sm text-darkText font-medium'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore cumque error minima natus temporibus commodi dolorem saepe,</p>
                             </div>
                             <div className="pt-2">
-                                <Heading className={'text-base font-semibold text-white bg-accent inline px-3 py-1 rounded-tr-xl rounded-bl-xl'} text={'Tanvir'} as={'h5'}/>
+                                <Heading className={'lg:text-base text-sm font-semibold text-white bg-accent inline px-3 py-1 rounded-tr-xl rounded-bl-xl'} text={'Tanvir'} as={'h5'}/>
                             </div>
                         </div>
                     </Flex>
                 </div>
-                </div>
+                    </div>
            
 
                 {/* ====== */}
 
               
                   <div className="px-2">
-                    <div className=" bg-darkText lg:p-5 p-3 rounded">
+                        <div className=" bg-darkText lg:p-5 p-3 rounded">
                     <Flex className={'flex-col lg:flex-row'}>
                         <div className="lg:w-[45%]">
                             <Image className={'lg:w-[200px] lg:h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
                         </div>
                         <div className="lg:w-[49%]">
-                            <Heading className={'text-xl text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
-                            <Heading className={'text-2xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
+                            <Heading className={'lg:text-xl text-base text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
+                            <Heading className={'lg:text-2xl text-xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
                             <div className="bg-white rounded p-3">
                                 <p className='text-sm text-darkText font-medium'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore cumque error minima natus temporibus commodi dolorem saepe,</p>
                             </div>
                             <div className="pt-2">
-                                <Heading className={'text-base font-semibold text-white bg-accent inline px-3 py-1 rounded-tr-xl rounded-bl-xl'} text={'Tanvir'} as={'h5'}/>
+                                <Heading className={'lg:text-base text-sm font-semibold text-white bg-accent inline px-3 py-1 rounded-tr-xl rounded-bl-xl'} text={'Tanvir'} as={'h5'}/>
                             </div>
                         </div>
                     </Flex>
                 </div>
-                  </div>
+                    </div>
               
 
                 {/* ==== */}
@@ -116,13 +115,13 @@ const CustomerReview = () => {
                             <Image className={'lg:w-[200px] lg:h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
                         </div>
                         <div className="lg:w-[49%]">
-                            <Heading className={'text-xl text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
-                            <Heading className={'text-2xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
+                            <Heading className={'lg:text-xl text-base text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
+                            <Heading className={'lg:text-2xl text-xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
                             <div className="bg-white rounded p-3">
                                 <p className='text-sm text-darkText font-medium'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore cumque error minima natus temporibus commodi dolorem saepe,</p>
                             </div>
                             <div className="pt-2">
-                                <Heading className={'text-base font-semibold text-white bg-accent inline px-3 py-1 rounded-tr-xl rounded-bl-xl'} text={'Tanvir'} as={'h5'}/>
+                                <Heading className={'lg:text-base text-sm font-semibold text-white bg-accent inline px-3 py-1 rounded-tr-xl rounded-bl-xl'} text={'Tanvir'} as={'h5'}/>
                             </div>
                         </div>
                     </Flex>
@@ -136,13 +135,13 @@ const CustomerReview = () => {
                             <Image className={'lg:w-[200px] lg:h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
                         </div>
                         <div className="lg:w-[49%]">
-                            <Heading className={'text-xl text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
-                            <Heading className={'text-2xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
+                            <Heading className={'lg:text-xl text-base text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
+                            <Heading className={'lg:text-2xl text-xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
                             <div className="bg-white rounded p-3">
                                 <p className='text-sm text-darkText font-medium'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore cumque error minima natus temporibus commodi dolorem saepe,</p>
                             </div>
                             <div className="pt-2">
-                                <Heading className={'text-base font-semibold text-white bg-accent inline px-3 py-1 rounded-tr-xl rounded-bl-xl'} text={'Tanvir'} as={'h5'}/>
+                                <Heading className={'lg:text-base text-sm font-semibold text-white bg-accent inline px-3 py-1 rounded-tr-xl rounded-bl-xl'} text={'Tanvir'} as={'h5'}/>
                             </div>
                         </div>
                     </Flex>
