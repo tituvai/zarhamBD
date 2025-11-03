@@ -27,7 +27,7 @@ const Banner = () => {
       <div>
         <Link to={'/'}>
     <div className='bg-[url("/src/assets/banner.jpg")] bg-no-repeat bg-center bg-cover py-50'>
-    <Container className={'relative'}>
+    <Container className={'relative px-3'}>
         <Heading className={'text-5xl text-darkText font-bold'} text={'STYLE IS CHARACTER'} as={'h1'}/>
         <Heading className={'text-base text-darkText font-medium pt-5'} text={'Redefine Your Wardrobe'} as={'h3'}/>
         <Button className={'mt-5'} btnText={'Shop Now'}/>
@@ -38,7 +38,7 @@ const Banner = () => {
       <div>
         <Link to={'/'}>
     <div className='bg-[url("/src/assets/banner.jpg")] bg-no-repeat bg-center bg-cover py-50'>
-    <Container className={'relative'}>
+    <Container className={'relative px-3'}>
         <Heading className={'text-5xl text-darkText font-bold'} text={'STYLE IS CHARACTER'} as={'h1'}/>
         <Heading className={'text-base text-darkText font-medium pt-5'} text={'Redefine Your Wardrobe'} as={'h3'}/>
         <Button className={'mt-5'} btnText={'Shop Now'}/>

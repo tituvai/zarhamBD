@@ -13,33 +13,62 @@ import PrevArrow from "../common/PrivArrow";
 const CustomerReview = () => {
 
      var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
      nextArrow:<NextArrow/>,
-    prevArrow:<PrevArrow/>
+    prevArrow:<PrevArrow/>,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          nextArrow:null,
+          prevArrow:null
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          nextArrow:null,
+          prevArrow:null
+        }
+      }
+    ]
   };
   return (
     <>
     <div className="pb-3 pt-10">
        
         <Container>
-            <div className="">
+            <div className="overflow-x-hidden">
                 <Heading className={'text-4xl text-darkText font-semibold text-center pb-10'} text={'Customer Reviews'} as={'h3'}/>
             </div>
             
                  <Slider {...settings} className="mx-2">
-                   
-                    
+      
                 <div className="px-2">
-                    <div className=" bg-darkText p-5 rounded">
-                    <Flex>
-                        <div className="w-[45%]">
-                            <Image className={'w-[200px] h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
+                    <div className=" bg-darkText lg:p-5 p-3 rounded">
+                    <Flex className={'flex-col lg:flex-row'}>
+                        <div className="lg:w-[45%]">
+                            <Image className={'lg:w-[200px] lg:h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
                         </div>
-                        <div className="w-[49%]">
+                        <div className="lg:w-[49%]">
                             <Heading className={'text-xl text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
                             <Heading className={'text-2xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
                             <div className="bg-white rounded p-3">
@@ -58,12 +87,12 @@ const CustomerReview = () => {
 
               
                   <div className="px-2">
-                    <div className=" bg-darkText p-5 rounded">
-                    <Flex>
-                        <div className="w-[45%]">
-                            <Image className={'w-[200px] h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
+                    <div className=" bg-darkText lg:p-5 p-3 rounded">
+                    <Flex className={'flex-col lg:flex-row'}>
+                        <div className="lg:w-[45%]">
+                            <Image className={'lg:w-[200px] lg:h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
                         </div>
-                        <div className="w-[49%]">
+                        <div className="lg:w-[49%]">
                             <Heading className={'text-xl text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
                             <Heading className={'text-2xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
                             <div className="bg-white rounded p-3">
@@ -81,12 +110,12 @@ const CustomerReview = () => {
                 {/* ==== */}
 
                     <div className="px-2">
-                        <div className=" bg-darkText p-5 rounded">
-                    <Flex>
-                        <div className="w-[45%]">
-                            <Image className={'w-[200px] h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
+                        <div className=" bg-darkText lg:p-5 p-3 rounded">
+                    <Flex className={'flex-col lg:flex-row'}>
+                        <div className="lg:w-[45%]">
+                            <Image className={'lg:w-[200px] lg:h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
                         </div>
-                        <div className="w-[49%]">
+                        <div className="lg:w-[49%]">
                             <Heading className={'text-xl text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
                             <Heading className={'text-2xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
                             <div className="bg-white rounded p-3">
@@ -101,12 +130,12 @@ const CustomerReview = () => {
                     </div>
 
                     <div className="px-2">
-                        <div className=" bg-darkText p-5 rounded">
-                    <Flex>
-                        <div className="w-[45%]">
-                            <Image className={'w-[200px] h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
+                        <div className=" bg-darkText lg:p-5 p-3 rounded">
+                    <Flex className={'flex-col lg:flex-row'}>
+                        <div className="lg:w-[45%]">
+                            <Image className={'lg:w-[200px] lg:h-[250px] border-4 border-accent rounded-2xl'} imgSrc={shirt} imgAlt={'shirt.jpg'}/>
                         </div>
-                        <div className="w-[49%]">
+                        <div className="lg:w-[49%]">
                             <Heading className={'text-xl text-lightText font-bold'} text={'Your Voice'} as={'h3'}/>
                             <Heading className={'text-2xl text-accent font-bold uppercase pb-2'} text={'MATTERS'} as={'h3'}/>
                             <div className="bg-white rounded p-3">

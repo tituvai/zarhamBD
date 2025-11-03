@@ -17,17 +17,17 @@ const NewArrival = () => {
             <div className="">
                 <Heading className={'text-4xl text-darkText font-semibold text-center pb-10'} text={'New Arrival'} as={'h3'}/>
             </div>
-            <Flex>
-                <div className="w-[24%]">
+            <Flex className={'flex-wrap gap-y-5'}>
+                <div className="w-[49%] lg:w-[24%]">
                     <Product productSrc={panjabi} ProductAlt={'shirt.png'} productPrice={'340 Tk'} productTitle={'Men Solid full sleeve cotton'} />
                 </div>
-                <div className="w-[24%]">
+                <div className="w-[49%] lg:w-[24%]">
                     <Product productSrc={shirt} ProductAlt={'shirt.jpg'} productPrice={'340 Tk'} productTitle={'Men Solid full sleeve cotton'} />
                 </div>
-                <div className="w-[24%]">
+                <div className="w-[49%] lg:w-[24%]">
                     <Product productSrc={panjabiOne} ProductAlt={'shirt.png'} productPrice={'340 Tk'} productTitle={'Men Solid full sleeve cotton'} />
                 </div>
-                <div className="w-[24%]">
+                <div className="w-[49%] lg:w-[24%]">
                     <Product productSrc={panjabiTwo} ProductAlt={'shirt.png'} productPrice={'340 Tk'} productTitle={'Men Solid full sleeve cotton'} />
                 </div>
             </Flex>

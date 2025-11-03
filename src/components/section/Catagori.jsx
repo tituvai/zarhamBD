@@ -14,8 +14,8 @@ const Catagori = () => {
             <div className="">
                 <Heading className={'text-4xl text-darkText font-semibold text-center pb-5'} text={'Shop By Category'} as={'h3'}/>
             </div>
-            <Flex>
-                <div className="w-[24%]">
+            <Flex className={'flex-wrap gap-y-4'}>
+                <div className="w-[49%] lg:w-[24%]">
                     <Link to={'/'}>
                         <div className="relative group">
                         <Image imgSrc={shirt} imgAlt={"shirt.png"}/>
@@ -25,7 +25,7 @@ const Catagori = () => {
                     <Heading className={'text-2xl text-darkText font-medium uppercase text-center pt-3'} text={'shirts'} as={'h3'}/>
                     </Link>
                 </div>
-                <div className="w-[24%]">
+                <div className="w-[49%] lg:w-[24%]">
                     <Link to={'/'}>
                         <div className="relative group">
                         <Image imgSrc={shirt} imgAlt={"shirt.png"}/>
@@ -35,7 +35,7 @@ const Catagori = () => {
                     <Heading className={'text-2xl text-darkText font-medium uppercase text-center pt-3'} text={'t-shirts'} as={'h3'}/>
                     </Link>
                 </div>
-                <div className="w-[24%]">
+                <div className="w-[49%] lg:w-[24%]">
                     <Link to={'/'}>
                         <div className="relative group">
                         <Image imgSrc={shirt} imgAlt={"shirt.png"}/>
@@ -45,7 +45,7 @@ const Catagori = () => {
                     <Heading className={'text-2xl text-darkText font-medium uppercase text-center pt-3'} text={'Trousers'} as={'h3'}/>
                     </Link>
                 </div>
-                <div className="w-[24%]">
+                <div className="w-[49%] lg:w-[24%]">
                     <Link to={'/'}>
                         <div className="relative group">
                         <Image imgSrc={shirt} imgAlt={"shirt.png"}/>
