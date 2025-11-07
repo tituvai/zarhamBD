@@ -5,9 +5,23 @@ import { FaRegHeart } from "react-icons/fa6";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import panjabiThree from '/src/assets/panjabiThree.jpg'
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { useDispatch } from 'react-redux';
 
 const Product = ({productSrc, ProductAlt, productDelete, productPrice, productTitle}) => {
   return (
+
+//       const dispatch = useDispatch()
+
+//   const AddToHandle = ()=>{
+//     setCartActive(!cartActive)
+//     dispatch(addCart({
+//       image : productSrc,
+//       title : productTitle,
+//       price : productPrice, 
+//       quantity : 1
+//     }))
+    
+//   }
     <>
     <div className="">
             <div className="relative group hover:bg-white hover:shadow-2xl">
