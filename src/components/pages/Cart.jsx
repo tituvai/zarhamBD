@@ -6,8 +6,22 @@ import shirt from '/src/assets/shirt.jpg'
 import { MdOutlineClear } from "react-icons/md";
 import Button from '../common/Button'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { cartDicement, cartIncement, removeBtn } from '../../slice/addToCart'
 
 const Cart = () => {
+
+    const data = useSelector ((state)=> state.cart.value)
+
+    const dispatch = useDispatch()
+
+ // subtotal Part
+      const vat= 9
+      const totleVat = data.reduce((total)=> total + vat, 0)
+      const subTotal = data.reduce((total, item) => total + item.price * item.quantity, 0);
+      const totalPrice = data.reduce((total, item) => total + vat + item.price * item.quantity, 0);
+
+
   return (
     <>
     <div className="py-20 bg-lightText">
@@ -23,113 +37,50 @@ const Cart = () => {
                <div className="bg-white rounded-xl p-3 lg:p-10  lg:w-[70%]">
                  <Heading className={'text-base text-darkText font-semibold'} text={<><span>Your Cart</span><span>(3 items)</span></>} as={'h4'}/>
             
- <div className="p-3 hover:bg-stone-100 rounded mt-3">
-  <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-3">
-    <div className="lg:w-[55%] flex flex-wrap items-center gap-3 w-full md:w-auto justify-between md:justify-start">
-      <div className="flex items-center gap-3 w-[65%]">
-        <Image className="w-[60px] md:w-[70px]" imgSrc={shirt} imgAlt="shirt.jpg" />
-        <Heading className="text-base md:text-lg text-darkText font-medium" text="Shirt Total" as="h5"/>
-      </div>
-      <div className="md:ml-5 w-[25%]">
-        <Heading className="text-base md:text-lg text-gray-700 font-semibold text-right" text="2324 tk" as="h5"/>
-      </div>
-    </div>
-
-    <div className="lg:w-[40%] flex flex-wrap items-center justify-between md:justify-end gap-3 w-full md:w-auto mt-2 md:mt-0">
-      <div className='w-[20%]'>
-        <Heading className="text-sm md:text-base text-gray-600 font-medium" text="Size: XL" as="h5" />
-      </div>
-
-      <div className="flex items-center w-[60%]">
-        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-2 cursor-pointer text-center"> +</span>
-        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-4 mx-3">  1</span>
-        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-2 cursor-pointer text-center">  - </span>
-      </div>
-
-      <div className='w-[10%]'>
-        <MdOutlineClear className="text-gray-500 hover:text-darkText size-5 cursor-pointer" />
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
 
                  {/* =========================================== */}
- <div className="p-3 hover:bg-stone-100 rounded mt-3">
-  <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-3">
-    <div className="lg:w-[55%] flex flex-wrap items-center gap-3 w-full md:w-auto justify-between md:justify-start">
-      <div className="flex items-center gap-3 w-[65%]">
-        <Image className="w-[60px] md:w-[70px]" imgSrc={shirt} imgAlt="shirt.jpg" />
-        <Heading className="text-base md:text-lg text-darkText font-medium" text="Shirt Total" as="h5"/>
-      </div>
-      <div className="md:ml-5 w-[25%]">
-        <Heading className="text-base md:text-lg text-gray-700 font-semibold text-right" text="2324 tk" as="h5"/>
-      </div>
-    </div>
+                 {data.map((item)=>(
+                  <div className="p-3 hover:bg-stone-100 rounded mt-3">
+                  <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-3">
+                    <div className="lg:w-[55%] flex flex-wrap items-center gap-3 w-full md:w-auto justify-between md:justify-start">
+                      <div className="flex items-center gap-3 w-[65%]">
+                        <Image className="w-[60px] md:w-[70px]" imgSrc={item.image} imgAlt="shirt.jpg" />
+                        <Heading className="text-base md:text-lg text-darkText font-medium" text={item.title} as="h5"/>
+                      </div>
+                      <div className="md:ml-5 w-[25%]">
+                        <Heading className="text-base md:text-lg text-gray-700 font-semibold text-right" text={item.price} as="h5"/>
+                      </div>
+                    </div>
 
-    <div className="lg:w-[40%] flex flex-wrap items-center justify-between md:justify-end gap-3 w-full md:w-auto mt-2 md:mt-0">
-      <div className='w-[20%]'>
-        <Heading className="text-sm md:text-base text-gray-600 font-medium" text="Size: XL" as="h5" />
-      </div>
+                    <div className="lg:w-[40%] flex flex-wrap items-center justify-between md:justify-end gap-3 w-full md:w-auto mt-2 md:mt-0">
+                      <div className='w-[20%]'>
+                        <Heading className="text-sm md:text-base text-gray-600 font-medium" text="Size: XL" as="h5" />
+                      </div>
 
-      <div className="flex items-center w-[60%]">
-        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-2 cursor-pointer text-center"> +</span>
-        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-4 mx-3">  1</span>
-        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-2 cursor-pointer text-center">  - </span>
-      </div>
+                      <div className="flex items-center w-[60%]">
+                        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-2 cursor-pointer text-center" onClick={()=>{dispatch(cartDicement(item))}}> -</span>
+                        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-4 mx-3">{item.quantity}</span>
+                        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-2 cursor-pointer text-center" onClick={()=>{dispatch(cartIncement(item))}}> +</span>
+                      </div>
 
-      <div className='w-[10%]'>
-        <MdOutlineClear className="text-gray-500 hover:text-darkText size-5 cursor-pointer" />
-      </div>
-    </div>
-  </div>
-</div>
-
-                 {/* ======================================================= */}
-
-<div className="p-3 hover:bg-stone-100 rounded mt-3">
-  <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-3">
-    <div className="lg:w-[55%] flex flex-wrap items-center gap-3 w-full md:w-auto justify-between md:justify-start">
-      <div className="flex items-center gap-3 w-[65%]">
-        <Image className="w-[60px] md:w-[70px]" imgSrc={shirt} imgAlt="shirt.jpg" />
-        <Heading className="text-base md:text-lg text-darkText font-medium" text="Shirt Total" as="h5"/>
-      </div>
-      <div className="md:ml-5 w-[25%]">
-        <Heading className="text-base md:text-lg text-gray-700 font-semibold text-right" text="2324 tk" as="h5"/>
-      </div>
-    </div>
-
-    <div className="lg:w-[40%] flex flex-wrap items-center justify-between md:justify-end gap-3 w-full md:w-auto mt-2 md:mt-0">
-      <div className='w-[20%]'>
-        <Heading className="text-sm md:text-base text-gray-600 font-medium" text="Size: XL" as="h5" />
-      </div>
-
-      <div className="flex items-center w-[60%]">
-        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-2 cursor-pointer text-center"> +</span>
-        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-4 mx-3">  1</span>
-        <span className="text-base text-darkText font-semibold border-2 border-gray-300 rounded px-2 cursor-pointer text-center">  - </span>
-      </div>
-
-      <div className='w-[10%]'>
-        <MdOutlineClear className="text-gray-500 hover:text-darkText size-5 cursor-pointer" />
-      </div>
-    </div>
-  </div>
-</div>
-
-
+                      <div className='w-[10%]'>
+                        <MdOutlineClear onClick={()=>{dispatch(removeBtn(item.title))}} className="text-gray-500 hover:text-darkText size-5 cursor-pointer" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                 ))}
 
  </div>
 
-               {/* ========================================================== */}
+               {/* =========================Cart Totol Part ================================= */}
 
                <div className="lg:w-[28%] bg-white rounded-xl p-3 lg:p-10">
                     <Heading className={'text-lg text-darkText font-semibold pb-8'} text={'Order'} as={'h4'}/>
                     <div className="flex justify-between items-center">
                         <Heading className={'text-base text-darkText font-semibold '} text={'Subtotal:'} as={'h4'}/>
-                        <Heading className={'text-base text-gray-600 font-semibold '} text={'235 tk'} as={'h5'}/>
+                        {data.length > 0 &&(<Heading className={'text-base text-gray-600 font-semibold '} text={subTotal} as={'h5'}/>)}
                     </div>
                     <div className="flex justify-between items-center pt-3">
                         <Heading className={'text-base text-darkText font-semibold '} text={'Shipping:'} as={'h4'}/>
@@ -137,11 +88,11 @@ const Cart = () => {
                     </div>
                     <div className="flex justify-between items-center pt-3 border-b-2 border-gray-200 pb-6">
                         <Heading className={'text-base text-darkText font-semibold '} text={'Vat:'} as={'h4'}/>
-                        <Heading className={'text-base text-gray-600 font-semibold '} text={'15 tk'} as={'h5'}/>
+                        {data.length > 0 &&(<Heading className={'text-base text-gray-600 font-semibold '} text={totleVat} as={'h5'}/>)}
                     </div>
                     <div className="flex items-center justify-between">
                         <Heading className={'text-base text-darkText font-semibold pt-2'} text={'Total'} as={'h3'}/>
-                        <Heading className={'text-base text-darkText font-semibold pt-2'} text={'2450'} as={'h3'}/>
+                         {data.length >0 &&(<Heading className={'text-base text-gray-600 font-semibold'} text={totalPrice} as={'h6'}/>)}
                     </div>
 
                     <div className="pt-5">

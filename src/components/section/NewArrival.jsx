@@ -19,16 +19,16 @@ const NewArrival = () => {
             </div>
             <Flex className={'flex-wrap gap-y-5'}>
                 <div className="w-[49%] lg:w-[24%]">
-                    <Product productSrc={panjabi} ProductAlt={'shirt.png'} productPrice={'340 Tk'} productTitle={'Men Solid full sleeve cotton'} />
+                    <Product productSrc={panjabi} ProductAlt={'shirt.png'} productPrice={340} productTitle={'Men Solid full sleeve cotton'} />
                 </div>
                 <div className="w-[49%] lg:w-[24%]">
-                    <Product productSrc={shirt} ProductAlt={'shirt.jpg'} productPrice={'340 Tk'} productTitle={'Men Solid full sleeve cotton'} />
+                    <Product productSrc={shirt} ProductAlt={'shirt.jpg'} productPrice={540} productTitle={'Men Solid  sleeve cotton'} />
                 </div>
                 <div className="w-[49%] lg:w-[24%]">
-                    <Product productSrc={panjabiOne} ProductAlt={'shirt.png'} productPrice={'340 Tk'} productTitle={'Men Solid full sleeve cotton'} />
+                    <Product productSrc={panjabiOne} ProductAlt={'shirt.png'} productPrice={140} productTitle={'Men sleeve cotton'} />
                 </div>
                 <div className="w-[49%] lg:w-[24%]">
-                    <Product productSrc={panjabiTwo} ProductAlt={'shirt.png'} productPrice={'340 Tk'} productTitle={'Men Solid full sleeve cotton'} />
+                    <Product productSrc={panjabiTwo} ProductAlt={'shirt.png'} productPrice={240} productTitle={'Men Solid full sleeve'} />
                 </div>
             </Flex>
             <div className="flex justify-center pt-10">

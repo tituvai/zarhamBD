@@ -12,20 +12,14 @@ import "slick-carousel/slick/slick-theme.css";
 import NextArrow from '../common/NextArrow';
 import PrevArrow from '../common/PrivArrow'; // Assuming 'PrivArrow' is your custom PrevArrow component
 import shirt from '/src/assets/shirt.jpg'
+import { useDispatch, useSelector } from 'react-redux';
+import { addCart } from '../../slice/addToCart';
 
 const ShopDetails = () => {
-
-    
-    const product = {
-        title: "Classic Cotton Shirt",
-        price: "$199.00"
-        
-    };
     // ********************************************
 
     const images = [shirt, shirt, shirt, shirt ];
 
-    // Main Product Image Slider Settings (with custom thumbnails)
     const settings = {
         customPaging: function (i) {
             return (
@@ -33,7 +27,6 @@ const ShopDetails = () => {
             );
         },
         dots: true,
-        // The custom CSS for these dots must be in your main CSS file
         dotsClass: "slick-dots slick-thumb custom-thumb", 
         infinite: true,
         speed: 500,
@@ -84,7 +77,7 @@ const ShopDetails = () => {
 
     // State for selected options
     const [selectedsize, setSelectedsize]= useState('s')
-    const [selectedColor, setSelectedColor]= useState('#000000') // Initial color for visual consistency
+    const [selectedColor, setSelectedColor]= useState('#000000') 
 
     // Quantity counter logic
     const [count, setCount]=useState(1)
@@ -98,21 +91,30 @@ const ShopDetails = () => {
             setCount(count-1)
         }
     }
+
+    // Product Detalis Part Start Slice
+
+    const products = useSelector((state)=>state.productDetails.value)
+
+    const dispatch = useDispatch()
+
+    const handleAddToCart = ()=>{
+    dispatch(addCart({title:products.title, price: products.price, image:products.image, size: selectedsize}))
+    console.log('Clicked');
+    
+    }
     
     return (
         <>
             <div className="px-3 lg:px-0 my-25">
                 <Container>
                     <div className="lg:flex justify-between">
-                        {/* --------------------- Product Image Slider (Left Side) --------------------- */}
                         <div className="lg:w-[50%] pb-10 lg:pb-0 ">
-                            {/* FIX: Removed duplicate Slider wrapper and corrected nesting */}
                             <div className="slider-container lg:pl-30 z-40 "> 
                                 <Slider {...settings} className="">
                                     {images.map((img, index) => ( 
-                                        // It's generally better to wrap slider content in a div
                                         <div key={index}>
-                                            <img className="w-full h-[600px] object-cover" src={img} alt={`slide-${index}`}/>
+                                            <img className="w-full h-[600px] object-cover" src={products.image} alt={`slide-${index}`}/>
                                         </div>
                                     ))}
                                 </Slider>
@@ -127,8 +129,8 @@ const ShopDetails = () => {
                                 <span>/</span>
                                 <span className="text-base text-menuC font-medium uppercase">The Shop</span>
                             </div>
-                            <Heading className={'text-[26px] text-menuC pt-5'} text={product.title} as={'h4'}/>
-                            <Heading className={'text-[22px] text-menuC font-medium pb-5'} text={product.price} as={'h4'}/>
+                            <Heading className={'text-[26px] text-menuC pt-5'} text={products.title} as={'h4'}/>
+                            <Heading className={'text-[22px] text-menuC font-medium pb-5'} text={products.price} as={'h4'}/>
                             <Peragrap className={'leading-6'} peraText={'Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliquet magna posuere eget.'}/>
                             
                             {/* Sizes */}
@@ -169,7 +171,7 @@ const ShopDetails = () => {
                                     <span className="text-2xl text-darkText font-medium cursor-pointer" onClick={handleDecement}>-</span>
                                 </div>
                                 {/* Add to Cart Button */}
-                                <div className=""><Button className={'px-18 mt-3 lg:mt-0'} btnText={'ADD TO CART'}/></div>
+                                <div className=""><Button onClick={handleAddToCart} className={'px-18 mt-3 lg:mt-0'} btnText={'ADD TO CART'}/></div>
                             </div>
 
                             {/* Wishlist and Share */}
@@ -209,17 +211,17 @@ const ShopDetails = () => {
                             {/* Product Features List */}
                             <div className="">
                                 <Heading className={'text-base text-accent font-medium pb-5'} text={'Why choose product?'} as={'h6'}/>
-                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><div className="w-[10px] h-[10px] bg-categoriC rounded-full"></div><span>Creat by cotton fibric with soft and smooth</span></>}/>        
-                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><div className="w-[10px] h-[10px] bg-categoriC rounded-full"></div><span>Simple, Configurable (e.g. size, color, etc.), bundled</span></>}/>        
-                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><div className="w-[10px] h-[10px] bg-categoriC rounded-full"></div><span>Downloadable/Digital Products, Virtual Products</span></>}/>        
+                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><div className="w-[10px] h-[10px] bg-categoriC rounded-full"></div><span>Creat by cotton fibric with soft and smooth</span></>}/> 
+                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><div className="w-[10px] h-[10px] bg-categoriC rounded-full"></div><span>Simple, Configurable (e.g. size, color, etc.), bundled</span></>}/> 
+                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><div className="w-[10px] h-[10px] bg-categoriC rounded-full"></div><span>Downloadable/Digital Products, Virtual Products</span></>}/> 
                             </div>
                             
                             {/* Sample Number List */}
                             <div className="">
                                 <Heading className={'text-base text-accent font-medium pb-5 pt-5 lg:pt-0'} text={'Sample Number List'} as={'h6'}/>
-                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><span>1</span><span>Create Store-specific attrittbutes on the fly</span></>}/>        
-                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><span>2</span><span>Simple, Configurable (e.g. size, color, etc.), bundled</span></>}/>        
-                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><span>3</span><span>Downloadable/Digital Products, Virtual Products</span></>}/>        
+                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><span>1</span><span>Create Store-specific attrittbutes on the fly</span></>}/> 
+                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><span>2</span><span>Simple, Configurable (e.g. size, color, etc.), bundled</span></>}/> 
+                                <Peragrap className={'flex items-center gap-x-2 leading-7.5'} peraText={<><span>3</span><span>Downloadable/Digital Products, Virtual Products</span></>}/> 
                             </div>
                         </div>
 

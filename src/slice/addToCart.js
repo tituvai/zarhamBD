@@ -19,26 +19,26 @@ export const addToCart = createSlice({
 
 // Count Part Start 
 
-// cartIncement: (state, action)=>{
-//     state.value.map((item)=>{
-//         if(item.title === action.payload.title){
-//             item.quantity +=1;
-//         }
-//     })
-// },
-// cartDicement:(state, action)=>{
-//     state.value.map((item)=>{
-//         if(item.title===action.payload.title && item.quantity >1){
-//             item.quantity -=1;
-//         }
-//     })
-// },
+cartIncement: (state, action)=>{
+    state.value.map((item)=>{
+        if(item.title === action.payload.title){
+            item.quantity +=1;
+        }
+    })
+},
+cartDicement:(state, action)=>{
+    state.value.map((item)=>{
+        if(item.title===action.payload.title && item.quantity >1){
+            item.quantity -=1;
+        }
+    })
+},
 
 // remove Button part Start 
 
-//  removeBtn:(state, action)=>{
-//       state.value= state.value.filter(item=> item.title !== action.payload)
-//     }
+ removeBtn:(state, action)=>{
+      state.value= state.value.filter(item=> item.title !== action.payload)
+    }
 
   }
 })
