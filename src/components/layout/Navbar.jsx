@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// Universal React Icons Import for Canvas Environment
+
 import { IoIosSearch, IoMdHeartEmpty } from "react-icons/io";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa6";
@@ -10,9 +10,7 @@ import { HiBars3 } from "react-icons/hi2";
 import Image from '../common/Image';
 import logo from '/src/assets/logo.png'
 
-// Placeholder for external components and assets
-// NOTE: Replaced '../common/Image', '../common/Container', and '../common/Flex'
-// and '/src/assets/logo.png' with simple div/img tags and Tailwind classes.
+
 
 const Navbar = () => {
 
@@ -58,15 +56,11 @@ const Navbar = () => {
   return (
    <>
   <div className="py-12">
-     {/* CONFLICT 1: Solved by merging the new semi-transparent background color (bg-[#000000]/30) when visible */}
      <div className={`fixed z-50 top-0 left-0 w-full transition-transform duration-300 ${isVisible ? 'translate-y-0 bg-[#000000]/70' : '-translate-y-full bg-darkText'}`}>
-     {/* Container Replacement: Changed <Container> to <div> with max-width and centering classes */}
      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-5 hidden lg:block">
-        {/* Flex Replacement: Changed <Flex> to <div> with flex classes */}
         <div className="flex items-center justify-between">
           <div className="relative ">
-             {/* Image Replacement: Changed <Image> to <img> tag */}
              <Link to={'/'}>
                 <span className="text-xl font-bold text-white w-[200px] h-10 flex items-center justify-center ">
                   <Image imgSrc={logo}/>
@@ -83,7 +77,6 @@ const Navbar = () => {
               {name: "About", path:'/'},
               {name: "Contact", path:'/'},
             ].map((item, index)=>(
-              // NOTE: Assuming 'text-lightText' is white/light for the dark background
               <li key={index} onClick={()=>handleMenuActive(index)} className={`text-base font-medium transition-colors ${manuActive=== index ? 'text-white' : 'text-gray-400 hover:text-white'}`}><Link to={item.path}>{item.name}</Link></li>
             ))}
           </ul>
@@ -92,18 +85,16 @@ const Navbar = () => {
             <IoIosSearch className=' size-6 cursor-pointer hover:text-gray-400'/>
             <IoMdHeartEmpty className=' size-6 cursor-pointer hover:text-gray-400'/>
             <FaRegUser className=' size-5 cursor-pointer hover:text-gray-400'/>
-            {/* CONFLICT 3: Solved by keeping the Link to the cart page */}
            <Link to={'/cart'}><AiOutlineShoppingCart className=' size-6 cursor-pointer hover:text-gray-400'/></Link>
           </div>
-        </div> {/* End of Flex replacement div */}
+        </div> 
         </div>
 
         {/* mobile divece Part Start  */}
 
-        {/* Flex Replacement: Changed <Flex> to <div> with flex classes */}
+
            <div className={'lg:hidden px-3 flex items-center justify-between py-3'}>
              <div className="relative ">
-             {/* Image Replacement: Changed <Image> to <span> tag */}
              <Link to={'/'}>
                 <span className="text-xl font-bold text-white">Zarhan</span>
              </Link>
@@ -111,12 +102,12 @@ const Navbar = () => {
           <div className="text-white">
              {mobileBars ? <MdOutlineClear onClick={handleMobileBars} className='text-3xl cursor-pointer'/> : <span onClick={handleMobileBars}><HiBars3 className='size-6 cursor-pointer'/></span>}
              </div>
-           </div> {/* End of Flex replacement div */}
+           </div> 
             {mobileBars && <div className="absolute top-full left-0 w-full bg-[#000000] shadow-lg lg:hidden">
                <ul className='p-5'>
                 {[
                   {name: "Home", path:'/'},
-                  {name: "Shop", path:'/'},
+                  {name: "Shop", path:'/shop'},
                   {name: "Collections", path:'/'},
                   {name: "Lookbook", path:'/'},
                   {name: "About", path:'/'},
@@ -133,7 +124,7 @@ const Navbar = () => {
           </div>
          </div>  
         }          
-     </div> {/* End of Container replacement div */}
+     </div> 
    </div>
   </div>
    </>

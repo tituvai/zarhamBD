@@ -51,7 +51,7 @@ const CustomerReview = () => {
                 <Heading className={'text-4xl text-darkText font-semibold text-center pb-10'} text={'Customer Reviews'} as={'h3'}/>
             </div>
             
-                 <Slider {...settings} className="mx-2 overflow-x-hidden">
+                 <Slider {...settings} className="mx-2">
       
                 <div className="px-2">
                         <div className=" bg-darkText lg:p-5 p-3 rounded">
