@@ -1,132 +1,143 @@
-import React, { useEffect, useState } from 'react'
-import Image from '../common/Image'
-import logo from '/src/assets/logo.png'
-import { Link } from 'react-router-dom'
-import Container from '../common/Container'
-import Flex from '../common/Flex'
-import { IoIosSearch } from "react-icons/io";
-import { IoMdHeartEmpty } from "react-icons/io";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+// Universal React Icons Import for Canvas Environment
+import { IoIosSearch, IoMdHeartEmpty } from "react-icons/io";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa6";
 import { MdOutlineClear } from "react-icons/md";
-
 import { HiBars3 } from "react-icons/hi2";
+import Image from '../common/Image';
+import logo from '/src/assets/logo.png'
+
+// Placeholder for external components and assets
+// NOTE: Replaced '../common/Image', '../common/Container', and '../common/Flex'
+// and '/src/assets/logo.png' with simple div/img tags and Tailwind classes.
 
 const Navbar = () => {
 
-    // MenuItem Active Part Start 
+    // MenuItem Active Part Start 
+  const [manuActive, setManuActive]= useState(false)
+        const handleMenuActive = (index)=>{
+          setManuActive(index)
+        }
+        // Menu Active Part End 
 
-  const [manuActive, setManuActive]= useState(false)
-        const handleMenuActive = (index)=>{
-          setManuActive(index)
-        }
+  // Mobile divece Part Start
+  const [mobileBars, setMobileBars] =useState(false)
 
-        // Menu Active Part End 
+  const handleMobileBars = ()=>{
+    setMobileBars(!mobileBars)
+  }
+  // Mobile divece Part End
 
-  // Mobile divece Part Start
+  // Navebar Scroll Part Start 
+    // menu Part Start 
+   const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  const [mobileBars, setMobileBars] =useState(false)
+   useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
 
-  const handleMobileBars = ()=>{
-    setMobileBars(!mobileBars)
-  }
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
 
-  // Mobile divece Part End
+      setLastScrollY(currentScrollY);
+    };
 
-  // Navebar Scroll Part Start 
+    window.addEventListener('scroll', handleScroll);
 
-    // menu Part Start 
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+  // Navebar Scroll Part End
 
-   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  return (
+   <>
+  <div className="py-12">
+     {/* CONFLICT 1: Solved by merging the new semi-transparent background color (bg-[#000000]/30) when visible */}
+     <div className={`fixed z-50 top-0 left-0 w-full transition-transform duration-300 ${isVisible ? 'translate-y-0 bg-[#000000]/70' : '-translate-y-full bg-darkText'}`}>
+     {/* Container Replacement: Changed <Container> to <div> with max-width and centering classes */}
+     <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="py-5 hidden lg:block">
+        {/* Flex Replacement: Changed <Flex> to <div> with flex classes */}
+        <div className="flex items-center justify-between">
+          <div className="relative ">
+             {/* Image Replacement: Changed <Image> to <img> tag */}
+             <Link to={'/'}>
+                <span className="text-xl font-bold text-white w-[200px] h-10 flex items-center justify-center ">
+                  <Image imgSrc={logo}/>
+                </span>
+             </Link>
+            </div>
+          <div className="flex-grow flex justify-center">
+              <ul className='flex items-center gap-x-10'>
+            {[
+              {name: "Home", path:'/'},
+              {name: "Shop", path:'/shop'},
+              {name: "Collections", path:'/'},
+              {name: "Lookbook", path:'/shopDetails'},
+              {name: "About", path:'/'},
+              {name: "Contact", path:'/'},
+            ].map((item, index)=>(
+              // NOTE: Assuming 'text-lightText' is white/light for the dark background
+              <li key={index} onClick={()=>handleMenuActive(index)} className={`text-base font-medium transition-colors ${manuActive=== index ? 'text-white' : 'text-gray-400 hover:text-white'}`}><Link to={item.path}>{item.name}</Link></li>
+            ))}
+          </ul>
+          </div>
+          <div className="flex items-center gap-x-8 text-white">
+            <IoIosSearch className=' size-6 cursor-pointer hover:text-gray-400'/>
+            <IoMdHeartEmpty className=' size-6 cursor-pointer hover:text-gray-400'/>
+            <FaRegUser className=' size-5 cursor-pointer hover:text-gray-400'/>
+            {/* CONFLICT 3: Solved by keeping the Link to the cart page */}
+           <Link to={'/cart'}><AiOutlineShoppingCart className=' size-6 cursor-pointer hover:text-gray-400'/></Link>
+          </div>
+        </div> {/* End of Flex replacement div */}
+        </div>
 
-   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+        {/* mobile divece Part Start  */}
 
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setIsVisible(false);
-      } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true);
-      }
-
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
-  // Navebar Scroll Part End
-  return (
-   <>
-  <div className="py-12">
-     <div className={`bg-darkText fixed z-50 top-0 left-0 w-full transition-transform duration-300 ${isVisible ? 'translate-y-0 bg-darkText' : '-translate-y-full bg-darkText'}`}>
-     <Container>
-        <div className="py-5 hidden lg:block">
-        <Flex>
-          <div className="relative ">
-             <Link to={'/'}><Image className={'w-[200px]'} imgSrc={logo} imgAlt={'logo.png'}/></Link>
-            </div>
-          <div className="">
-              <ul className='flex items-center gap-x-10'>
-            {[
-              {name: "Home", path:'/'},
-              {name: "Shop", path:'/shopDetails'},
-              {name: "Collections", path:'/'},
-              {name: "Lookbook", path:'/'},
-              {name: "About", path:'/'},
-              {name: "Contact", path:'/'},
-            ].map((item, index)=>(
-              <li key={index} onClick={()=>handleMenuActive(index)} className={`text-base text-accent hover:text-accent font-medium ${manuActive=== index ? 'text-accent' : 'text-lightText'}`}><Link to={item.path}>{item.name}</Link></li>
-            ))}
-          </ul>
-          </div>
-          <div className="flex items-center gap-x-8">
-            <IoIosSearch className=' size-6 cursor-pointer  text-lightText'/>
-            <IoMdHeartEmpty className='text-lightText size-6'/>
-            <FaRegUser className='text-lightText size-5'/>
-            <AiOutlineShoppingCart className='text-lightText size-6'/>
-          </div>
-        </Flex>
-        </div>
-
-        {/* mobile divece Part Start  */}
-
-           <Flex className={'lg:hidden px-3'}>
-             <div className="relative ">
-             <Link to={'/'}><Image className={'w-[200px]'} imgSrc={logo} imgAlt={'logo.png'}/></Link>
-            </div>
-          <div className="">
-             {mobileBars ? <MdOutlineClear onClick={handleMobileBars} className='text-2xl text-lightText'/> : <span onClick={handleMobileBars}><HiBars3 className='text-lightText size-6'/></span>}
-             </div>
-           </Flex>
-            {mobileBars && <div className="">
-               <ul className='p-5'>
-                {[
-                  {name: "Home", path:'/'},
-                  {name: "Shop", path:'/'},
-                  {name: "Collections", path:'/'},
-                  {name: "Lookbook", path:'/'},
-                  {name: "About", path:'/'},
-                  {name: "Contact", path:'/'},
-                ].map((item, index)=>(
-                  <li key={index} onClick={()=>handleMenuActive(index)} className={`text-base py-1 text-accent hover:text-accent font-medium ${manuActive=== index ? 'text-accent' : 'text-lightText'}`}><Link to={item.path}>{item.name}</Link></li>
-                ))}
-              </ul>
-              <div className="flex items-center gap-x-8 px-5 pb-5">
-            <IoIosSearch className=' size-6 cursor-pointer  text-lightText'/>
-            <IoMdHeartEmpty className='text-lightText size-6'/>
-            <FaRegUser className='text-lightText size-5'/>
-            <AiOutlineShoppingCart className='text-lightText size-6'/>
-          </div>
-         </div>  
-        }          
-     </Container>  
-   </div>
-  </div>
-   </>
-  )
+        {/* Flex Replacement: Changed <Flex> to <div> with flex classes */}
+           <div className={'lg:hidden px-3 flex items-center justify-between py-3'}>
+             <div className="relative ">
+             {/* Image Replacement: Changed <Image> to <span> tag */}
+             <Link to={'/'}>
+                <span className="text-xl font-bold text-white">Zarhan</span>
+             </Link>
+            </div>
+          <div className="text-white">
+             {mobileBars ? <MdOutlineClear onClick={handleMobileBars} className='text-3xl cursor-pointer'/> : <span onClick={handleMobileBars}><HiBars3 className='size-6 cursor-pointer'/></span>}
+             </div>
+           </div> {/* End of Flex replacement div */}
+            {mobileBars && <div className="absolute top-full left-0 w-full bg-[#000000] shadow-lg lg:hidden">
+               <ul className='p-5'>
+                {[
+                  {name: "Home", path:'/'},
+                  {name: "Shop", path:'/'},
+                  {name: "Collections", path:'/'},
+                  {name: "Lookbook", path:'/'},
+                  {name: "About", path:'/'},
+                  {name: "Contact", path:'/'},
+                ].map((item, index)=>(
+                  <li key={index} onClick={()=>handleMenuActive(index)} className={`text-base py-3 px-2 font-medium transition-colors border-b border-gray-700 ${manuActive=== index ? 'text-white' : 'text-gray-400 hover:text-white'}`}><Link to={item.path}>{item.name}</Link></li>
+                ))}
+              </ul>
+              <div className="flex items-center gap-x-8 px-5 pb-5 text-white">
+            <IoIosSearch className=' size-6 cursor-pointer'/>
+            <IoMdHeartEmpty className=' size-6 cursor-pointer'/>
+            <FaRegUser className=' size-5 cursor-pointer'/>
+            <AiOutlineShoppingCart className=' size-6 cursor-pointer'/>
+          </div>
+         </div>  
+        }          
+     </div> {/* End of Container replacement div */}
+   </div>
+  </div>
+   </>
+  )
 }
 
 export default Navbar
