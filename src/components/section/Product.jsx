@@ -10,7 +10,7 @@ import { addCart } from '../../slice/addToCart';
 import { productDetails } from '../../slice/productDetailSlice';
 import { useNavigate } from 'react-router-dom';
 
-const Product = ({productSrc, ProductAlt, productDelete, productPrice, productTitle}) => {
+const Product = ({productSrc, ProductAlt, productDelete, productPrice, productTitle, hoverSrc, hoverAlt}) => {
 
 const dispatch = useDispatch()
 
@@ -50,7 +50,7 @@ const navigator = useNavigate()
             <div className=" hover:bg-white hover:shadow-2xl" onClick={handleDetalis}>
                 <div className="w-full group relative">
                     <Image imgSrc={productSrc} imgAlt={ProductAlt}/>
-                    <Image className={'opacity-0 group-hover:opacity-100 absolute top-0 left-0 transition-all duration-[1s]'} imgSrc={panjabiThree} imgAlt={"panjabiThree.jpg"}/>
+                    <Image className={'opacity-0 group-hover:opacity-100 absolute top-0 left-0 transition-all duration-[1s]'} imgSrc={hoverSrc} imgAlt={hoverAlt}/>
                     <div className="absolute left-1/2 -translate-x-1/2 transition-all bottom-10 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-[1s] flex items-center gap-x-5">
                     <div className="p-3 py-2 bg-white rounded"     onClick={(e) => { e.stopPropagation(); AddToHandle();}}><AiOutlineShoppingCart className='text-accent size-7  cursor-pointer'/></div>
                     <div className="p-3 py-2 bg-white"><MdOutlineRemoveRedEye className='text-accent size-7  cursor-pointer'/></div>

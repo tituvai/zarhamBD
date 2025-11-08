@@ -8,6 +8,7 @@ import Shop from './components/pages/Shop'
 import Cart from './components/pages/Cart'
 import Checkout from './components/pages/Checkout'
 import Confirmation from './components/pages/Confirmation'
+import { WishList } from './components/pages/WishList'
 
 function App() {
  
@@ -21,7 +22,8 @@ function App() {
       <Route path='/shop' element={<Shop/>}/>
       <Route path='/shopDetails' element={<ShopDetails/>}/>
       <Route path='/cart' element={<Cart/>}/>
-      <Route path='/checkout' element={<Checkout/>}/>
+      <Route path='/cart' element={<Cart/>}/>
+      <Route path='/wishList' element={<WishList/>}/>
       <Route path='/confirmation' element={<Confirmation/>}/>
       </Route>
     </Routes>

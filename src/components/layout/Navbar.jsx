@@ -118,7 +118,8 @@ const Navbar = () => {
               </ul>
               <div className="flex items-center gap-x-8 px-5 pb-5 text-white">
             <IoIosSearch className=' size-6 cursor-pointer'/>
-            <IoMdHeartEmpty className=' size-6 cursor-pointer'/>
+            <Link to={'/wishList'}><IoMdHeartEmpty className=' size-6 cursor-pointer'/></Link>
+            
             <FaRegUser className=' size-5 cursor-pointer'/>
             <AiOutlineShoppingCart className=' size-6 cursor-pointer'/>
           </div>

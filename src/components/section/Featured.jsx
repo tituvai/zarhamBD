@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Container from '../common/Container'
-import Product from './Product'
-import panjabi from '/src/assets/panjabi.jpg'
-import panjabiOne from '/src/assets/shirt.jpg'
-import shirt from '/src/assets/panjabiOne.jpg'
-import panjabiTwo from '/src/assets/panjabiTwo.jpg'
-import Flex from '../common/Flex'
-import Heading from '../common/Heading'
-import Button from '../common/Button'
-import axios from 'axios'
+import axios from 'axios';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NextArrow from '../common/NextArrow'
 import PrevArrow from '../common/PrivArrow'
+import Heading from '../common/Heading';
+import Product from './Product';
 
-const NewArrival = () => {
+const Featured = () => {
 
     // react slick Slider Start
 
@@ -28,20 +22,46 @@ const NewArrival = () => {
     autoplay: true,
     autoplaySpeed: 2000,
      nextArrow:<NextArrow/>,
-    prevArrow:<PrevArrow/>
+    prevArrow:<PrevArrow/>,
+      responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
     // react slick Slider End
 
-      const [newApi, setNewApi]=useState([])
+      const [featureApi, setFeatureApi]=useState([])
          useEffect(() => {
         async function allProduct() {
           try {
-            const response = await axios.get('https://www.zarhan.com.bd/api/products/new')
+            const response = await axios.get('https://www.zarhan.com.bd/api/products/featured')
             // console.log("API response:", response.data) 
     
             const newProduct = response.data?.data || []
-            setNewApi(newProduct)
+            setFeatureApi(newProduct)
           } catch (error) {
             console.error("API Error:", error)
           }
@@ -50,27 +70,25 @@ const NewArrival = () => {
         allProduct()
       }, [])
 
+
   return (
     <>
-    <div className="py-15 px-2">
+    <div className="">
         <Container>
-            <div className="">
-                <Heading className={'text-4xl text-darkText font-semibold text-center pb-10'} text={'New Arrival'} as={'h3'}/>
+        <div className="">
+              <Heading className={'text-4xl text-darkText font-semibold text-center pb-10'} text={'Our Featured'} as={'h3'}/>
             </div>
             <Slider {...settings} className='xm-4'>
-                {newApi.map((item, index)=>(
+                {featureApi.map((item, index)=>(
                 <div key={item.id || index} className="w-[49%] lg:w-[24%] px-2">
                 <Product productSrc={item.featured_image} hoverSrc={item.hover_image}  productPrice={'320'} productTitle={item.name} />
                 </div>
                 ))}   
             </Slider>
-            <div className="flex justify-center pt-10">
-                <Button btnText={'View All'}/>
-            </div>
         </Container>
     </div>
     </>
   )
 }
 
-export default NewArrival
+export default Featured

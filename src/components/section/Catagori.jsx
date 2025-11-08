@@ -13,11 +13,13 @@ const Catagori = () => {
      useEffect(() => {
     async function allProduct() {
       try {
-        const response = await axios.get(' https://www.zarhan.com.bd/api/categories')
-        // console.log("API response:", response.data) 
+        const response = await axios.get('https://www.zarhan.com.bd/api/categories')
+        
+        console.log("API response:", response.data) 
 
         const categories = response.data?.data || []
-        setCatagoriApi(categories)
+        const childCategories = categories.filter(cat => cat.parent_id)
+      setCatagoriApi(childCategories.slice(0, 3))
       } catch (error) {
         console.error("API Error:", error)
       }
@@ -35,7 +37,7 @@ const Catagori = () => {
           
                 <Flex className={'flex-wrap gap-y-5'}>
                 {catagoriApi?.map((item) => (
-                <div className="w-[49%] lg:w-[24%]  h-[420px]" key={item.id}>
+                <div className="w-[49%] lg:w-[32%]  h-[420px]" key={item.id}>
                 <Link to={'/'}>
                     <div className="relative group">
                     <Image className={'w-full h-[420px]'} imgSrc={item.image} />

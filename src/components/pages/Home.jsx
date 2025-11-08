@@ -5,6 +5,9 @@ import Catagori from '../section/Catagori'
 import NewArrival from '../section/NewArrival'
 import Founder from '../section/Founder'
 import CustomerReview from '../section/CustomerReview'
+import Featured from '../section/Featured'
+import TrendingProduct from '../section/TrendingProduct'
+import HotProduct from '../section/HotProduct'
 
 
 const Home = () => {
@@ -15,6 +18,9 @@ const Home = () => {
     <Derybely/>
     <Catagori/>
     <NewArrival/>
+    <HotProduct/>
+    <Featured/>
+    <TrendingProduct/>
     <Founder/>
     <CustomerReview/>
     </>
