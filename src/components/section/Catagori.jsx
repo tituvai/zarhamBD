@@ -35,10 +35,10 @@ const Catagori = () => {
           
                 <Flex className={'flex-wrap gap-y-5'}>
                 {catagoriApi?.map((item) => (
-                <div className="w-[49%] lg:w-[24%]" key={item.id}>
+                <div className="w-[49%] lg:w-[24%]  h-[420px]" key={item.id}>
                 <Link to={'/'}>
                     <div className="relative group">
-                    <Image imgSrc={item.image} />
+                    <Image className={'w-full h-[420px]'} imgSrc={item.image} />
                     <div className="w-full h-[420px] bg-white opacity-15 absolute top-0 left-0 scale-x-0 group-hover:scale-x-100 duration-700"></div>
                     <div className="w-full h-[420px] bg-white opacity-15 absolute top-0 left-0 scale-y-0 group-hover:scale-y-100 duration-700"></div>
                     </div>
